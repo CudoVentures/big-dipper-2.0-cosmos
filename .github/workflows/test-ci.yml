@@ -42,18 +42,18 @@ jobs:
     - name: Set up Cloud SDK
       run: google-github-actions/setup-gcloud@v0
         
-    - name: Auth docker    
-      run: |-
-       gcloud --quiet auth configure-docker
+#     - name: Auth docker    
+#       run: |-
+#        gcloud --quiet auth configure-docker
          
-    # Build the Docker image
-    - name: Build
-      run: |-
-        docker build --tag "gcr.io/${{ secrets.GCP_PROJECT }}/explorer-v2-ui-image:$GITHUB_SHA" .
+#     # Build the Docker image
+#     - name: Build
+#       run: |-
+#         docker build --tag "gcr.io/${{ secrets.GCP_PROJECT }}/explorer-v2-ui-image:$GITHUB_SHA" .
           
-    # Push the Docker image to Google Container Registry
-    - name: Publish
-      run: |-
-        docker push "gcr.io/${{ secrets.GCP_PROJECT }}/explorer-v2-ui-image:$GITHUB_SHA"
+#     # Push the Docker image to Google Container Registry
+#     - name: Publish
+#       run: |-
+#         docker push "gcr.io/${{ secrets.GCP_PROJECT }}/explorer-v2-ui-image:$GITHUB_SHA"
         
 
