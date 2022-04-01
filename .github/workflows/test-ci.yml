@@ -42,8 +42,8 @@ jobs:
     - name: Set up Cloud SDK
       run: google-github-actions/setup-gcloud@v0
         
-        
-    - run: |-
+    - name: Auth docker    
+      run: |-
        gcloud --quiet auth configure-docker
          
     # Build the Docker image
