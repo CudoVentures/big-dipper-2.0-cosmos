@@ -62,7 +62,7 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |-
-        docker build --tag "gcr.io/$PROJECT_ID/explorer-v2-image:$GITHUB_SHA" .
+        docker build --tag "gcr.io/$PROJECT_ID/explorer-v2-image:$GITHUB_SHA" -f "Dockerfile-prod" .
 
     # Push the Docker image to Google Container Registry
     - name: Publish
