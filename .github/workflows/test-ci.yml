@@ -7,6 +7,7 @@ on:
     branches: [ cudos-ci ]
   pull_request:
     branches: [ cudos-master ]
+  
 
   workflow_dispatch:
 
@@ -21,16 +22,16 @@ jobs:
 
     
     steps:
-      - name: Checkout
-      - uses: actions/checkout@v3
+    - name: Checkout
+    - uses: actions/checkout@v3
       
        # Configure Workload Identity Federation and generate an access token.
-      - id: 'auth'
-        name: 'Authenticate to Google Cloud'
-        uses: 'google-github-actions/auth@v0'
-        with:
-          workload_identity_provider: 'projects/673780150138/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
-          service_account: 'github-actions-ci-cd-service@cudos-testnet.iam.gserviceaccount.com'
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        workload_identity_provider: 'projects/673780150138/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
+        service_account: 'github-actions-ci-cd-service@cudos-testnet.iam.gserviceaccount.com'
 
 #       - id: 'auth'
 #         name: 'Authenticate to Google Cloud'
@@ -38,21 +39,21 @@ jobs:
 #         with:
 #           credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
 
-      - name: Set up Cloud SDK
-        run: google-github-actions/setup-gcloud@v0
+    - name: Set up Cloud SDK
+      run: google-github-actions/setup-gcloud@v0
         
         
-      - run: |-
-         gcloud --quiet auth configure-docker
+    - run: |-
+       gcloud --quiet auth configure-docker
          
-      # Build the Docker image
-      - name: Build
-        run: |-
-          docker build --tag "gcr.io/$GCP_PROJECT/explorer-v2-ui-image:$GITHUB_SHA" .
+    # Build the Docker image
+    - name: Build
+      run: |-
+        docker build --tag "gcr.io/${{ secrets.GCP_PROJECT }}/explorer-v2-ui-image:$GITHUB_SHA" .
           
     # Push the Docker image to Google Container Registry
-      - name: Publish
-        run: |-
-          docker push "gcr.io/$PROJECT_ID/explorer-v2-ui-image:$GITHUB_SHA"
+    - name: Publish
+      run: |-
+        docker push "gcr.io/${{ secrets.GCP_PROJECT }}/explorer-v2-ui-image:$GITHUB_SHA"
         
 
