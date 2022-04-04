@@ -92,6 +92,7 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
+        gcloud auth configure-docker us-central1-docker.pkg.dev
         docker push "us-central1-docker.pkg.dev/$PROJECT_ID/$GAR_REPO_NAME/explorer-v2-image:$GITHUB_SHA"
 
     - name: Deploy
