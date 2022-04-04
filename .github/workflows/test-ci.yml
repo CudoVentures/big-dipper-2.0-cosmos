@@ -20,6 +20,8 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   GAR_REPO_NAME: ${{ secrets.GAR_REPO_NAME }}
+  GITHUB_SHA: ${{ github.sha }} 
+
 
 #   GCE_INSTANCE: my-githubactions-vm  # TODO: update to instance name
 #   GCE_INSTANCE_ZONE: us-central1-a   # TODO: update to instance zone
