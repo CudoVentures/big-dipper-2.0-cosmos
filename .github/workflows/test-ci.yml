@@ -57,6 +57,7 @@ jobs:
       with:
         workload_identity_provider: 'projects/673780150138/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider'
         service_account: 'github-actions-ci-cd-service@cudos-testnet.iam.gserviceaccount.com'
+        token_format: 'access_token'
 
     # Alternative option - authentication via credentials json
     # - id: 'auth'
@@ -71,10 +72,8 @@ jobs:
     # Generate WIF Token for auth with Google Artifacts Repository(GAR)
     # https://cloud.google.com/artifact-registry/docs/docker/authentication
     - run: |-
-        gcloud auth print-access-token \
-        --impersonate-service-account "github-actions-ci-cd-service@$PROJECT_ID.iam.gserviceaccount.com" | docker login \
-        -u oauth2accesstoken \
-        --password-stdin "https://us-central-1-docker.pkg.dev"
+         echo "${{ steps.gcp-auth.outputs.access_token }}" | docker login -u oauth2accesstoken --password-stdin us-central1-docker.pkg.dev
+
 
     # Build the Docker image
     - name: Build
