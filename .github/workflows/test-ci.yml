@@ -68,11 +68,13 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0
 
-    # Configure Docker to use the gcloud command-line tool as a credential
-    # helper for authentication
+    # Generate WIF Token for auth with Google Artifacts Repository(GAR)
+    # https://cloud.google.com/artifact-registry/docs/docker/authentication
     - run: |-
-        gcloud --quiet auth configure-docker \
-        us-central1-docker.pkg.dev
+        gcloud auth print-access-token \
+        --impersonate-service-account "github-actions-ci-cd-service@$PROJECT_ID.iam.gserviceaccount.com" | docker login \
+        -u oauth2accesstoken \
+        --password-stdin "https://us-central-1-docker.pkg.dev"
 
     # Build the Docker image
     - name: Build
@@ -92,7 +94,6 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
-        gcloud auth configure-docker us-central1-docker.pkg.dev
         docker push "us-central1-docker.pkg.dev/$PROJECT_ID/$GAR_REPO_NAME/explorer-v2-image:$GITHUB_SHA"
 
     - name: Deploy
