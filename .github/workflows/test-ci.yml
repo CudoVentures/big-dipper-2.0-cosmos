@@ -26,6 +26,16 @@ jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
+    environment: public-testnet
+    env:
+      LOGGING_DRIVER:  ${{ secrets.LOGGING_DRIVER }}
+      NEXT_PUBLIC_CHAIN_STATUS:  ${{ secrets.NEXT_PUBLIC_CHAIN_STATUS }}
+      NEXT_PUBLIC_GRAPHQL_URL:  ${{ secrets.NEXT_PUBLIC_GRAPHQL_URL }}
+      NEXT_PUBLIC_GRAPHQL_WS:  ${{ secrets.NEXT_PUBLIC_GRAPHQL_URL }}
+      NEXT_PUBLIC_URL:  ${{ secrets.NEXT_PUBLIC_URL }}
+      NEXT_PUBLIC_WS_CHAIN_URL:  ${{ secrets.NEXT_PUBLIC_WS_CHAIN_URL }}
+      NODE_ENV:  ${{ secrets.NODE_ENV }}
+      PORT:  ${{ secrets.PORT }}
 
     # Add "id-token" with the intended permissions.
     permissions:
