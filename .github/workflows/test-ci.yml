@@ -72,13 +72,13 @@ jobs:
     # Generate WIF Token for auth with Google Artifacts Repository(GAR)
     # https://cloud.google.com/artifact-registry/docs/docker/authentication
     - run: |-
-        echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://REGION-docker.pkg.dev
+        echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
 
     # Build the Docker image
     - name: Build
       run: |-
         docker build \
-        -t "us-docker.pkg.dev/$PROJECT_ID/$GAR_REPO_NAME/explorer-v2-image:$GITHUB_SHA" \
+        -t "us-central1-docker.pkg.dev/$PROJECT_ID/$GAR_REPO_NAME/explorer-v2-image:$GITHUB_SHA" \
         --build-arg LOGGING_DRIVER=$LOGGING_DRIVER \
         --build-arg NEXT_PUBLIC_CHAIN_STATUS=$NEXT_PUBLIC_CHAIN_STATUS \
         --build-arg NEXT_PUBLIC_GRAPHQL_URL=$NEXT_PUBLIC_GRAPHQL_URL \
