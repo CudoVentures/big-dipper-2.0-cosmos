@@ -19,32 +19,18 @@ export type OtherTokenType = {
   commission: TokenUnit;
 }
 
-export type DelegationType = {
-  validator: string;
-  validatorStatus: {
-    status: number;
-    jailed: boolean;
-  }
-  validatorSigningInfo: {
-    tombstoned: boolean;
-  }
-  commission: number;
-  amount: TokenUnit;
-  reward: TokenUnit;
+export type RewardsType = {
+  [value:string]: TokenUnit[];
 }
 
-export type RedelegationType = {
-  to: string;
-  from: string;
-  linkedUntil: string;
-  amount: TokenUnit;
-}
-
-export type UnbondingType = {
-  validator: string;
-  commission: number;
-  amount: TokenUnit;
-  linkedUntil: string;
+export type CosmwasmType = {
+  admin: string;
+  code_id: string,
+  label: string,
+  result_contract_address: string,
+  sender: string,
+  success: boolean,
+  transaction: any
 }
 
 export type AccountDetailState = {
@@ -57,22 +43,7 @@ export type AccountDetailState = {
     data: OtherTokenType[];
     count: number;
   };
-  delegations: {
-    data: DelegationType[];
-    count: number;
-  }
-  redelegations: {
-    data: RedelegationType[];
-    count: number;
-  }
-  unbondings: {
-    data: UnbondingType[];
-    count: number;
-  }
-  transactions: {
-    hasNextPage: boolean;
-    isNextPageLoading: boolean;
-    offsetCount: number;
-    data: Transactions[];
-  };
+  rewards: RewardsType;
+  cosmwasm: CosmwasmType;
+  tab: number;
 }

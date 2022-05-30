@@ -22,6 +22,7 @@ import CustomToolTip from './custom_tool_tip';
 import NotFound from './not_found';
 import LinearLoading from './linear_loading';
 import Name from './name';
+import InvariantHolder from './invariant_holder';
 import Markdown from './markdown';
 import ConditionExplanation from './condition_explanation';
 import TransactionsList from './transactions_list';
@@ -29,6 +30,9 @@ import LoadAndExist from './load_and_exist';
 import DesmosProfile from './desmos_profile';
 import TransactionListDetails from './transactions_list_details';
 import AvatarNameListMsg from './avatar_name_list_msg';
+import {
+  ContractOverview, ContractMessages, ContractMessagesList, SingleContractMessageMobile,
+} from './cosmwasm';
 
 export {
   Layout,
@@ -56,10 +60,15 @@ export {
   NotFound,
   LinearLoading,
   Name,
+  InvariantHolder,
   Markdown,
   ConditionExplanation,
   LoadAndExist,
   DesmosProfile,
   TransactionListDetails,
   AvatarNameListMsg,
+  ContractOverview,
+  ContractMessages,
+  ContractMessagesList,
+  SingleContractMessageMobile,
 };
