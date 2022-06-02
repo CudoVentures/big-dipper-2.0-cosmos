@@ -68,6 +68,13 @@ import GrantAllowance from './feegrant/grant_allowance';
 import RevokeAllowance from './feegrant/revoke_allowance';
 import CreateVestingAccount from './vesting/create_vesting_account';
 import CreatePeriodicVestingAccount from './vesting/create_periodic_vesting_account';
+import StoreCode from './cosmwasm/store_code';
+import InstantiateContract from './cosmwasm/instantiate_contract';
+import ExecuteContract from './cosmwasm/execute_contract';
+import MigrateContract from './cosmwasm/migrate_contract';
+import UpdateContractAdmin from './cosmwasm/update_contract_admin';
+import ClearContractAdmin from './cosmwasm/clear_contract_admin';
+import SendToCosmos from './gravity/send_to_cosmos';
 
 export {
   getMessageModelByType,
@@ -134,4 +141,11 @@ export {
   RevokeAllowance,
   CreateVestingAccount,
   CreatePeriodicVestingAccount,
+  StoreCode,
+  InstantiateContract,
+  ExecuteContract,
+  MigrateContract,
+  UpdateContractAdmin,
+  ClearContractAdmin,
+  SendToCosmos,
 };

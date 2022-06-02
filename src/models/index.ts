@@ -69,6 +69,13 @@ import MsgGrantAllowance from './msg/feegrant/msg_grant_allowance';
 import MsgRevokeAllowance from './msg/feegrant/msg_revoke_allowance';
 import MsgCreateVestingAccount from './msg/vesting/msg_create_vesting_account';
 import MsgCreatePeriodicVestingAccount from './msg/vesting/msg_create_periodic_vesting_account';
+import MsgStoreCode from './msg/cosmwasm/msg_store_code';
+import MsgInstantiateContract from './msg/cosmwasm/msg_instantiate_contract';
+import MsgExecuteContract from './msg/cosmwasm/msg_execute_contract';
+import MsgMigrateContract from './msg/cosmwasm/msg_migrate_contract';
+import MsgUpdateContractAdmin from './msg/cosmwasm/msg_update_contract_admin';
+import MsgClearContractAdmin from './msg/cosmwasm/msg_clear_contract_admin';
+import MsgSendToCosmosClaim from './msg/gravity/msg_send_to_cosmos_claim';
 
 export {
   BigDipperNetwork,
@@ -142,4 +149,11 @@ export {
   MsgRevokeAllowance,
   MsgCreateVestingAccount,
   MsgCreatePeriodicVestingAccount,
+  MsgStoreCode,
+  MsgInstantiateContract,
+  MsgExecuteContract,
+  MsgMigrateContract,
+  MsgUpdateContractAdmin,
+  MsgClearContractAdmin,
+  MsgSendToCosmosClaim,
 };
