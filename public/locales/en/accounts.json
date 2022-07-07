@@ -39,5 +39,7 @@
   "label": "Label",
   "codeId": "Code Id",
   "instaBlock": "Instantiated At Block",
-  "collateralTransactions": "Collateral Transactions"
+  "collateralTransactions": "Collateral Transactions",
+  "smartContractMessages": "Messages",
+  "smartContractInteraction": "Interact"
 }

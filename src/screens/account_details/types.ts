@@ -46,4 +46,5 @@ export type AccountDetailState = {
   rewards: RewardsType;
   cosmwasm: CosmwasmType;
   tab: number;
+  contractSchemas: any[],
 }

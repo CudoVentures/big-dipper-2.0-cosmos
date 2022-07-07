@@ -20,6 +20,7 @@ import {
   Transactions,
   OtherTokens,
   SimpleBalance,
+  SmartContractInteraction,
 } from './components';
 import { useAccountDetails } from './hooks';
 
@@ -33,7 +34,7 @@ const AccountDetails = () => {
 
   const isSmartContract = state.cosmwasm.result_contract_address === state.overview.address;
 
-  const tabs = [
+  let tabs = [
     {
       id: 0,
       key: 'transactions',
@@ -55,6 +56,45 @@ const AccountDetails = () => {
       ),
     },
   ];
+
+  if (isSmartContract) {
+    let querySchema = ''; let
+      executeSchema = '';
+
+    if (state.contractSchemas && state.contractSchemas.length > 0) {
+      for (const schema of state.contractSchemas) {
+        if (schema.funcName == 'query') {
+          querySchema = schema.data;
+        } else if (schema.funcName == 'execute') {
+          executeSchema = schema.data;
+        }
+      }
+    }
+
+    tabs = [
+      {
+        id: 0,
+        key: 'smartContractMessages',
+        component: (
+          <ContractMessages className={classes.transactions} address={state.cosmwasm.result_contract_address} />
+        ),
+      },
+      {
+        id: 1,
+        key: 'smartContractInteraction',
+        component: (
+          <SmartContractInteraction
+            address={state.cosmwasm.result_contract_address}
+            querySchema={querySchema}
+            executeSchema={executeSchema}
+            rpcUrl={process.env.NEXT_PUBLIC_RPC_URL}
+            chainID={process.env.NEXT_PUBLIC_CHAIN_ID}
+            gasPrice={process.env.NEXT_PUBLIC_GAS_PRICE}
+          />
+        ),
+      },
+    ];
+  }
 
   return (
     <>
@@ -122,33 +162,24 @@ const AccountDetails = () => {
                 rewards={state.rewards}
               />
               )}
-            {isSmartContract
-              ? (
-                <ContractMessages
-                  className={classes.transactions}
-                  address={state.cosmwasm.result_contract_address}
-                />
-              )
-              : (
-                <>
-                  <Tabs
-                    tab={state.tab}
-                    handleTabChange={handleTabChange}
-                    tabs={tabs}
-                  />
-                  {tabs.map((x) => {
-                    return (
-                      <TabPanel
-                        key={x.id}
-                        index={x.id}
-                        value={state.tab}
-                      >
-                        {x.component}
-                      </TabPanel>
-                    );
-                  })}
-                </>
-              )}
+            <>
+              <Tabs
+                tab={state.tab}
+                handleTabChange={handleTabChange}
+                tabs={tabs}
+              />
+              {tabs.map((x) => {
+                return (
+                  <TabPanel
+                    key={x.id}
+                    index={x.id}
+                    value={state.tab}
+                  >
+                    {x.component}
+                  </TabPanel>
+                );
+              })}
+            </>
           </span>
         </LoadAndExist>
       </Layout>
