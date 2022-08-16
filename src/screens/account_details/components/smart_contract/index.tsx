@@ -42,7 +42,7 @@ const SmartContractInteraction = (props: ISmartContractInteractionProps) => {
     const newState: any = {};
 
     if (props.querySchema) {
-      const querySchemaObj = JSON.parse(props.querySchema);
+      const querySchemaObj = props.querySchema;
 
       AddMissingTitles(querySchemaObj, '');
 
@@ -59,7 +59,7 @@ const SmartContractInteraction = (props: ISmartContractInteractionProps) => {
     }
 
     if (props.executeSchema) {
-      const executeSchemaObj = JSON.parse(props.executeSchema);
+      const executeSchemaObj = props.executeSchema;
 
       AddMissingTitles(executeSchemaObj, '');
 

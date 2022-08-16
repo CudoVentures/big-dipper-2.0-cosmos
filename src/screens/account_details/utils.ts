@@ -149,32 +149,15 @@ export const fetchCosmWasmInstantiation = async (address: string) => {
 };
 
 export const fetchContractSchemasByAddress = async (address: string) => {
-  const fetchedSourcesSchemas = [];
+  const schemasTypes = ['query', 'execute'];
 
+  let fetchedSourcesSchemas = [];
+  
   try {
-    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONTRACTS_URL}/contract-schemas?address=${address}`);
-    const sourcesSchemas = data.sources;
-
-    await new Promise((resolve, _) => {
-      if (sourcesSchemas.length == 0) {
-        resolve({});
-        return;
-      }
-
-      sourcesSchemas.forEach((_, sourceIdx) => {
-        sourcesSchemas[sourceIdx].schemas.forEach(async (schema, schemaIdx) => {
-          const schemaResponse = await axios.get(`${process.env.NEXT_PUBLIC_CONTRACTS_URL}/schema?id=${schema.id}`);
-          sourcesSchemas[sourceIdx].schemas[schemaIdx].data = JSON.stringify(schemaResponse.data);
-
-          fetchedSourcesSchemas.push(sourcesSchemas[sourceIdx].schemas[schemaIdx]);
-
-          if (fetchedSourcesSchemas.length == sourcesSchemas.length) {
-            console.log('resolved');
-            resolve({});
-          }
-        });
-      });
-    });
+    for (let i = 0; i < schemasTypes.length; i++) {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONTRACTS_URL}/schema?type=${schemasTypes[i]}&address=${address}`);
+      fetchedSourcesSchemas.push({ funcName: schemasTypes[i], data: data });
+    }
 
     return fetchedSourcesSchemas;
   } catch (error) {
