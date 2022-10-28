@@ -19,6 +19,7 @@ import {
   fetchRewards,
   fetchUnbondingBalance,
   fetchCosmWasmInstantiation,
+  fetchContractSchemasByAddress,
 } from './utils';
 
 const defaultTokenUnit: TokenUnit = {
@@ -62,6 +63,7 @@ const initialState: AccountDetailState = {
       },
     },
   },
+  contractSchemas: [],
   tab: 0,
 };
 
@@ -128,6 +130,7 @@ export const useAccountDetails = () => {
       fetchUnbondingBalance(address),
       fetchRewards(address),
       fetchCosmWasmInstantiation(address),
+      fetchContractSchemasByAddress(address),
     ];
     const [
       commission,
@@ -136,6 +139,7 @@ export const useAccountDetails = () => {
       unbonding,
       rewards,
       cosmWasmInstantiation,
+      fetchedContractSchemas,
     ] = await Promise.allSettled(promises);
 
     const formattedRawData: any = {};
@@ -148,6 +152,7 @@ export const useAccountDetails = () => {
 
     const rawData: any = {};
     rawData.cosmwasm = R.pathOr([], ['value'], cosmWasmInstantiation);
+    rawData.contractSchemas = R.pathOr([], ['value'], fetchedContractSchemas);
     handleSetState(rawData);
   };
 

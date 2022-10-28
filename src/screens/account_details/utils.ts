@@ -147,3 +147,20 @@ export const fetchCosmWasmInstantiation = async (address: string) => {
     return defaultReturnValue;
   }
 };
+
+export const fetchContractSchemasByAddress = async (address: string) => {
+  const schemasTypes = ['query', 'execute'];
+
+  let fetchedSourcesSchemas = [];
+  
+  try {
+    for (let i = 0; i < schemasTypes.length; i++) {
+      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_CONTRACTS_URL}/schema?type=${schemasTypes[i]}&address=${address}`);
+      fetchedSourcesSchemas.push({ funcName: schemasTypes[i], data: data });
+    }
+
+    return fetchedSourcesSchemas;
+  } catch (error) {
+    return fetchedSourcesSchemas;
+  }
+};
