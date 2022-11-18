@@ -1,6 +1,7 @@
+import { Translate } from 'next-translate';
 import React from 'react';
 
-export const fetchColumns = (t): {
+export const fetchColumns = (_t: Translate): {
   key: string;
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;

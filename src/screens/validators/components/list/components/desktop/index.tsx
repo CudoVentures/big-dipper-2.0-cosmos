@@ -4,7 +4,11 @@ import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { Box, Tooltip, Typography } from '@material-ui/core';
+import {
+  Box,
+  Tooltip,
+  Typography,
+} from '@material-ui/core';
 import { useGrid } from '@hooks';
 import {
   SortArrows,
@@ -54,15 +58,16 @@ const Desktop: React.FC<{
           address={x.validator.address}
           imageUrl={x.validator.imageUrl}
           name={x.validator.name}
-        />
-      ),
+        />),
       commission: `${numeral(x.commission).format('0.[00]')}%`,
       condition: (
-        <Tooltip title={(
-          <Typography variant="subtitle2">
-            {`${numeral(x.condition).format('0.[00]')}%`}
-          </Typography>
-        )}>
+        <Tooltip
+          title={(
+            <Typography variant="subtitle2">
+              {`${numeral(x.condition).format('0.[00]')}%`}
+            </Typography>
+          )}
+        >
           <Box>
             <Condition className={condition} />
           </Box>
@@ -132,7 +137,7 @@ const Desktop: React.FC<{
                           />
                         )}
                       </Typography>
-                    )
+                    );
                   }
 
                   if (key === 'votingPower') {
