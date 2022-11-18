@@ -4,12 +4,13 @@ import numeral from 'numeral';
 import useTranslation from 'next-translate/useTranslation';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { VariableSizeGrid as Grid } from 'react-window';
-import { Typography } from '@material-ui/core';
+import { Box, Tooltip, Typography } from '@material-ui/core';
 import { useGrid } from '@hooks';
 import {
   SortArrows,
   AvatarName,
   InfoPopover,
+  ConditionExplanation,
 } from '@components';
 import { getValidatorConditionClass } from '@utils/get_validator_condition';
 import { getValidatorStatus } from '@utils/get_validator_status';
@@ -57,7 +58,15 @@ const Desktop: React.FC<{
       ),
       commission: `${numeral(x.commission).format('0.[00]')}%`,
       condition: (
-        <Condition className={condition} />
+        <Tooltip title={(
+          <Typography variant="subtitle2">
+            {`${numeral(x.condition).format('0.[00]')}%`}
+          </Typography>
+        )}>
+          <Box>
+            <Condition className={condition} />
+          </Box>
+        </Tooltip>
       ),
       votingPower: (
         <VotingPower
@@ -108,6 +117,24 @@ const Desktop: React.FC<{
 
                   let formattedComponent = component;
 
+                  if (key === 'condition') {
+                    formattedComponent = (
+                      <Typography variant="h4" className="label popover">
+                        {t('condition')}
+                        <InfoPopover
+                          content={<ConditionExplanation />}
+                        />
+                        {!!sort && (
+                          <SortArrows
+                            sort={props.sortKey === sortingKey
+                              ? props.sortDirection
+                              : undefined}
+                          />
+                        )}
+                      </Typography>
+                    )
+                  }
+
                   if (key === 'votingPower') {
                     formattedComponent = (
                       <Typography variant="h4" className="label popover">
@@ -141,19 +168,19 @@ const Desktop: React.FC<{
                       role="button"
                     >
                       {formattedComponent || (
-                      <Typography
-                        variant="h4"
-                        align={align}
-                      >
-                        {t(key)}
-                        {!!sort && (
-                        <SortArrows
-                          sort={props.sortKey === sortingKey
-                            ? props.sortDirection
-                            : undefined}
-                        />
-                        )}
-                      </Typography>
+                        <Typography
+                          variant="h4"
+                          align={align}
+                        >
+                          {t(key)}
+                          {!!sort && (
+                            <SortArrows
+                              sort={props.sortKey === sortingKey
+                                ? props.sortDirection
+                                : undefined}
+                            />
+                          )}
+                        </Typography>
                       )}
                     </div>
                   );
