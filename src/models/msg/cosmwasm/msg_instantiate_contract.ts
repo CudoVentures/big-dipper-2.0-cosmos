@@ -1,4 +1,3 @@
-import { fetchCW20TokenInfo } from '@src/screens/token_details/utils';
 import * as R from 'ramda';
 import { Categories } from '../types';
 
@@ -26,10 +25,9 @@ class MsgInstantiateContract {
   }
 
   static getContractAddress(log: any) {
-
     const contractAddress = log
       .events.find((event: { type: string; }) => event.type === 'instantiate')
-      .attributes[0].value.replaceAll('"', '') || undefined
+      .attributes[0].value.replaceAll('"', '') || undefined;
 
     return contractAddress;
   }
@@ -48,7 +46,7 @@ class MsgInstantiateContract {
         denom: R.pathOr('', ['denom'], x),
         amount: R.pathOr(0, ['amount'], x),
       })),
-      contractAddress
+      contractAddress,
     });
   }
 }
