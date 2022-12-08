@@ -1,5 +1,4 @@
 import React from 'react';
-import numeral from 'numeral';
 import { Typography } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
 import { useRecoilValue } from 'recoil';
@@ -91,7 +90,7 @@ const TokenPrice: React.FC<{items: TokenPriceType[]} & ComponentDefault> = (prop
                         </Typography>
                         <Typography variant="body1">
                           $
-                          {numeral(x.value).format('0,0.00')}
+                          {x.value}
                         </Typography>
                       </>
                     );

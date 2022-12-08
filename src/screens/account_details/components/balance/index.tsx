@@ -3,8 +3,6 @@ import classnames from 'classnames';
 import Big from 'big.js';
 import numeral from 'numeral';
 import * as R from 'ramda';
-import { useRecoilValue } from 'recoil';
-import { readMarket } from '@recoil/market';
 import {
   Typography,
   Divider,
@@ -19,6 +17,8 @@ import useTranslation from 'next-translate/useTranslation';
 import { Box } from '@components';
 import { chainConfig } from '@configs';
 import { formatNumber } from '@utils/format_token';
+import { useDataBlocks } from '@src/screens/home/components/data_blocks/hooks';
+import { Tooltip } from '@mui/material';
 import { useStyles } from './styles';
 import { formatBalanceData } from './utils';
 
@@ -35,7 +35,8 @@ const Balance: React.FC<{
   const {
     classes, theme,
   } = useStyles();
-  const market = useRecoilValue(readMarket);
+  const { state } = useDataBlocks();
+  const marketPrice = state.price;
   const formattedChartData = formatBalanceData(props);
 
   const empty = {
@@ -63,7 +64,8 @@ const Balance: React.FC<{
 
   const dataCount = formatData.filter((x) => Big(x.value).gt(0)).length;
   const data = notEmpty ? formatData : [...formatData, empty];
-  const totalAmount = `$${numeral(Big(market.price || 0).times(props.total.value).toPrecision()).format('0,0.00')}`;
+  const rawTotalAmount = Big(marketPrice || 0).times(props.total.value).toPrecision();
+  const formatedTotalAmount = `$${numeral(rawTotalAmount).format('0,0.00')}`;
 
   // format
   const totalDisplay = formatNumber(props.total.value, props.total.exponent);
@@ -137,15 +139,17 @@ const Balance: React.FC<{
           <div className="total__secondary--container total__single--container">
             <Typography variant="body1" className="label">
               $
-              {numeral(market.price).format('0,0.[00]', Math.floor)}
+              {marketPrice}
               {' '}
               /
               {' '}
               {R.pathOr('', ['tokenUnits', chainConfig.primaryTokenUnit, 'display'], chainConfig).toUpperCase()}
             </Typography>
-            <Typography variant="body1">
-              {totalAmount}
-            </Typography>
+            <Tooltip title={`$${rawTotalAmount}`}>
+              <Typography variant="body1">
+                {formatedTotalAmount}
+              </Typography>
+            </Tooltip>
           </div>
         </div>
       </div>
