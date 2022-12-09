@@ -64,22 +64,22 @@ const mockAverageBlockTime = jest.fn().mockResolvedValue({
             operatorAddress: 'desmosvaloper18kvwy5hzcu3ss08lcfcnx0eajuecg69uvk76c3',
           },
         },
-      },
-    ],
-    preCommitsAggregate: {
-      aggregate: {
-        sum: {
-          votingPower: 7304,
-        },
-      },
-    },
-    preCommits: [
-      {
-        validator: {
-          validatorInfo: {
-            operatorAddress: 'desmosvaloper1qlh47ty9ah2d5e0xq6gsvqjvfulljl9602k7f9',
+        preCommitsAggregate: {
+          aggregate: {
+            sum: {
+              votingPower: 7304,
+            },
           },
         },
+        preCommits: [
+          {
+            validator: {
+              validatorInfo: {
+                operatorAddress: 'desmosvaloper1qlh47ty9ah2d5e0xq6gsvqjvfulljl9602k7f9',
+              },
+            },
+          },
+        ],
       },
     ],
   },
