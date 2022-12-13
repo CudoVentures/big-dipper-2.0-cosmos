@@ -12,7 +12,7 @@ class MsgExecuteContract {
   constructor(payload: any) {
     this.category = 'cosmwasm';
     this.contract = payload.contract;
-    const [method, args] = MsgExecuteContract.getMethodAndArguments(atob(payload.msg));
+    const [method, args] = MsgExecuteContract.getMethodAndArguments(JSON.stringify(payload.msg));
     this.method = method;
     this.arguments = args;
     this.sender = payload.sender;
@@ -21,7 +21,7 @@ class MsgExecuteContract {
   }
 
   static fromJson(json: any) {
-    json.msg_decoded = atob(json.msg);
+    json.msg_decoded = json.msg;
     return new MsgExecuteContract({
       contract: json.contract,
       msg: json.msg,
