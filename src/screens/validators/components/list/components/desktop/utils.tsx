@@ -1,12 +1,7 @@
+import { Translate } from 'next-translate';
 import React from 'react';
-import {
-  Typography,
-} from '@material-ui/core';
-import {
-  InfoPopover, ConditionExplanation,
-} from '@components';
 
-export const fetchColumns = (t): {
+export const fetchColumns = (_t: Translate): {
   key: string;
   align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
   width: number;
@@ -40,16 +35,10 @@ export const fetchColumns = (t): {
     },
     {
       key: 'condition',
+      sortKey: 'condition',
       align: 'center',
       width: 15,
-      component: (
-        <Typography variant="h4" className="label popover">
-          {t('condition')}
-          <InfoPopover
-            content={<ConditionExplanation />}
-          />
-        </Typography>
-      ),
+      sort: true,
     },
     {
       key: 'status',

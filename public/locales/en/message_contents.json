@@ -57,7 +57,7 @@
   "MsgCreateVestingAccount": "Vesting account created for <0>{{toAddress}}</0>",
   "MsgCreatePeriodicVestingAccount": "Periodic vesting account created for <0>{{toAddress}}</0>",
   "txStoreCode": "<0>{{sender}}</0> stored code",
-  "txInstantiateContract": "<0>{{sender}}</0> initiated contract with code ID <1>{{codeId}}</1>",
+  "txInstantiateContract": "<0>{{sender}}</0> instantiated <1>{{contractType}}</1>contract <2>{{contractAddress}}</2> with code ID <3>{{codeId}}</3>",
   "txExecuteContract": "<0>{{user}}</0> executed <1>{{method}}</1> on <2>{{address}}</2>",
   "txMigrateContract": "<0>{{admin}}</0> migrated contract <1>{{contract}}</1> to <1>{{newCodeId}}</1>",
   "txUpdateContractAdmin": "<0>{{admin}}</0> updated contract <1>{{contract}}</1> admin to <2>{{newAdmin}}</2>",
