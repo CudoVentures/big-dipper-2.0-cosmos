@@ -28,7 +28,7 @@ const insertMissingWithdrawRewardsMsgWhenDelegating = (transaction: any) => {
   for (let i = 0; i < messages.length; i += 1) {
     const model = getMessageModelByType(messages[i]?.['@type']);
 
-    if (model === MODELS.MsgDelegate) {
+    if (model === MODELS.MsgRedelegate) {
       const coinReceivedEvent = getEventAtIndex(transaction, i, 'coin_received');
       const coinSpentEvent = getEventAtIndex(transaction, i, 'coin_spent');
 
@@ -66,12 +66,12 @@ const getEventAtIndex = (transaction: any, index: number, eventType: string) => 
   }
 };
 
-const buildWithdrawRewardsMessage = (delegateMsg: any, coinReceivedEvent: any,
+const buildWithdrawRewardsMessage = (redelegateMsg: any, coinReceivedEvent: any,
   coinSpentEvent: any) => {
   const withdrawMsg = {
     '@type': '/cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward',
-    delegator_address: delegateMsg.delegator_address,
-    validator_address: delegateMsg.validator_address,
+    delegator_address: redelegateMsg.delegator_address,
+    validator_address: redelegateMsg.validator_src_address,
   };
 
   const events = [];
@@ -126,7 +126,7 @@ const buildWithdrawRewardsMessage = (delegateMsg: any, coinReceivedEvent: any,
       key: 'amount', value: coinReceivedEvent.attributes[1].value,
     },
     {
-      key: 'validator', value: delegateMsg.validator_address,
+      key: 'validator', value: redelegateMsg.validator_src_address,
     },
   ]));
 
