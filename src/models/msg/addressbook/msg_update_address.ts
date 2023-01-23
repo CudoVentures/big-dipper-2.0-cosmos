@@ -9,26 +9,25 @@ class MsgUpdateAddress {
     public label: string;
     public value: string;
 
-
     constructor(payload: any) {
-        this.category = 'addressbook';
-        this.type = payload.type;
-        this.json = payload.json;
-        this.creator = payload.creator;
-        this.network = payload.network;
-        this.label = payload.label;
-        this.value = payload.value;
+      this.category = 'addressbook';
+      this.type = payload.type;
+      this.json = payload.json;
+      this.creator = payload.creator;
+      this.network = payload.network;
+      this.label = payload.label;
+      this.value = payload.value;
     }
 
     static fromJson(json: any) {
-        return new MsgUpdateAddress({
-            json,
-            type: json['@type'],
-            label: json.label,
-            creator: json.creator,
-            network: json.network,
-            value: json.value
-        });
+      return new MsgUpdateAddress({
+        json,
+        type: json['@type'],
+        label: json.label,
+        creator: json.creator,
+        network: json.network,
+        value: json.value,
+      });
     }
 }
 
