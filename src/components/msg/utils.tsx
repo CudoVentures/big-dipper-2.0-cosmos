@@ -456,6 +456,27 @@ const getDataByType = (type: string) => {
       tagTheme: 'four',
       tagDisplay: 'MsgSendToCosmosClaim',
     },
+    // ========================
+    // Addressbook
+    // ========================
+    '/cudoventures.cudosnode.addressbook.MsgCreateAddress': {
+      model: MODELS.MsgCreateAddress,
+      content: COMPONENTS.CreateAddress,
+      tagTheme: 'twentyOne',
+      tagDisplay: 'txCreateAddress',
+    },
+    '/cudoventures.cudosnode.addressbook.MsgUpdateAddress': {
+      model: MODELS.MsgUpdateAddress,
+      content: COMPONENTS.UpdateAddress,
+      tagTheme: 'twentyOne',
+      tagDisplay: 'txUpdateAddress',
+    },
+    '/cudoventures.cudosnode.addressbook.MsgDeleteAddress': {
+      model: MODELS.MsgDeleteAddress,
+      content: COMPONENTS.DeleteAddress,
+      tagTheme: 'twentyOne',
+      tagDisplay: 'txDeleteAddress',
+    },
   };
 
   if (defaultTypeToModel[type]) return defaultTypeToModel[type];
@@ -480,7 +501,7 @@ export const getMessageModelByType = (type: string) => {
  * Helper function to correctly display the correct UI
  * @param type Model type
  */
-export const getMessageByType = (message: any, viewRaw: boolean, t:any) => {
+export const getMessageByType = (message: any, viewRaw: boolean, t: any) => {
   const { type } = message;
   let results: {
     content: any;

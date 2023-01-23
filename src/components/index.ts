@@ -33,6 +33,7 @@ import AvatarNameListMsg from './avatar_name_list_msg';
 import {
   ContractOverview, ContractMessages, ContractMessagesList, SingleContractMessageMobile,
 } from './cosmwasm';
+import AddressBookDetails from './addressbook_details';
 
 export {
   Layout,
@@ -71,4 +72,5 @@ export {
   ContractMessages,
   ContractMessagesList,
   SingleContractMessageMobile,
+  AddressBookDetails,
 };
