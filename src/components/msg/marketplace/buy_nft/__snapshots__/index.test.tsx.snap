@@ -21,7 +21,7 @@ exports[`screen: TransactionDetails/MsgBuyNft matches snapshot 1`] = `
     id="message_contents:txBuyNft"
     values={
       Object {
-        "id": undefined,
+        "id": "id",
         "price": "1 acudos",
       }
     }
