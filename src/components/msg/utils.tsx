@@ -475,7 +475,82 @@ const getDataByType = (type: string) => {
       model: MODELS.MsgDeleteAddress,
       content: COMPONENTS.DeleteAddress,
       tagTheme: 'twentyOne',
-      tagDisplay: 'txDeleteAddress',
+      tagDisplay: 'txCreateCollection',
+    },
+    // ========================
+    // Marketplace
+    // ========================
+    '/cudoventures.cudosnode.marketplace.MsgCreateCollection': {
+      model: MODELS.MsgCreateCollection,
+      content: COMPONENTS.CreateCollection,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txCreateCollection',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgPublishCollection': {
+      model: MODELS.MsgPublishCollection,
+      content: COMPONENTS.PublishCollection,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txPublishCollection',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgVerifyCollection': {
+      model: MODELS.MsgVerifyCollection,
+      content: COMPONENTS.VerifyCollection,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txPublishCollection',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgUnverifyCollection': {
+      model: MODELS.MsgUnverifyCollection,
+      content: COMPONENTS.UnverifyCollection,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txUnverifyCollection',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgAddAdmin': {
+      model: MODELS.MsgAddAdmin,
+      content: COMPONENTS.AddAdmin,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txAddAdmin',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgMintNft': {
+      model: MODELS.MsgMintNft,
+      content: COMPONENTS.MintNft,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txMintNft',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgPublishNft': {
+      model: MODELS.MsgPublishNft,
+      content: COMPONENTS.PublishNft,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txPublishNft',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgRemoveNft': {
+      model: MODELS.MsgRemoveNft,
+      content: COMPONENTS.RemoveNft,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txRemoveNft',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgUpdatePrice': {
+      model: MODELS.MsgUpdatePrice,
+      content: COMPONENTS.UpdatePrice,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txUpdatePrice',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgUpdateRoyalties': {
+      model: MODELS.MsgUpdateRoyalties,
+      content: COMPONENTS.UpdateRoyalties,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txUpdateRoyalties',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgBuyNft': {
+      model: MODELS.MsgBuyNft,
+      content: COMPONENTS.BuyNft,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txBuyNft',
+    },
+    '/cudoventures.cudosnode.marketplace.MsgRemoveAdmin': {
+      model: MODELS.MsgRemoveAdmin,
+      content: COMPONENTS.RemoveAdmin,
+      tagTheme: 'twentyTwo',
+      tagDisplay: 'txRemoveAdmin',
     },
   };
 
@@ -543,7 +618,10 @@ export const convertMsgsToModels = (transaction: any) => {
     const model = getMessageModelByType(msg?.['@type']);
     if (model === MODELS.MsgWithdrawDelegatorReward
       || model === MODELS.MsgWithdrawValidatorCommission
-      || model === MODELS.MsgInstantiateContract) {
+      || model === MODELS.MsgInstantiateContract
+      || model === MODELS.MsgVerifyCollection
+      || model === MODELS.MsgUnverifyCollection
+      || model === MODELS.MsgBuyNft) {
       const log = R.pathOr(null, ['logs', i], transaction);
       return model.fromJson(msg, log);
     }

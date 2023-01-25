@@ -65,5 +65,17 @@
   "MsgSendToCosmosClaim": "<0>{{ethSender}}</0> sent <1>{{amount}}</1> to <2>{{receiver}}</2>",
   "txCreateAddress": "<0>{{creator}}</0> created an addressbook record with the following details - <1></1>",
   "txUpdateAddress": "<0>{{creator}}</0> updated an addressbook record. New details - <1></1>",
-  "txDeleteAddress": "<0>{{creator}}</0> deleted the following addressbook record - <1></1>"
+  "txDeleteAddress": "<0>{{creator}}</0> deleted the following addressbook record - <1></1>",
+  "txCreateCollection": "<0>{{creator}}</0> created '<3>{{collectionId}}</3>' collection. <1></1><2></2>",
+  "txPublishCollection": "<0>{{creator}}</0> published '<3>{{collectionId}}</3>' collection. <1></1><2></2>",
+  "txUpdateRoyalties": "<0>{{creator}}</0> updated royalties for collection with ID: '<3>{{collectionId}}</3>' <1></1><2></2>",
+  "txVerifyCollection": "Marketplace admin: <1>{{admin}}</1> verified collection with ID: <2>{{collectionId}}</2> created by: <0>{{creator}}</0>",
+  "txUnverifyCollection": "Marketplace admin: <1>{{admin}}</1> unverified collection with ID: <2>{{collectionId}}</2> created by: <0>{{creator}}</0>",
+  "txAddAdmin": "<0>{{creator}}</0> added <1>{{address}}</1> as marketplace admin",
+  "txRemoveAdmin": "<0>{{creator}}</0> removed <1>{{address}}</1> from marketplace admins",
+  "txMintNft": "<0>{{creator}}</0> minted an NFT to <1>{{recipient}}</1> <2></2>",
+  "txPublishNft": "<0>{{creator}}</0> published for sale NFT with ID: <3>{{tokenId}}</3> from collection ID: <2>{{denomId}}</2> for <1>{{price}}</1>",
+  "txRemoveNft": "<0>{{creator}}</0> removed from sale NFT with ID: <1>{{id}}</1>",
+  "txUpdatePrice": "<0>{{creator}}</0> updated the price of NFT with ID: <2>{{id}}</2>. New price: <1>{{price}}</1>",
+  "txBuyNft": "<0>{{buyer}}</0> purchased NFT with ID: <3>{{id}}</3> from <1>{{seller}}</1> for <2>{{price}}</2>"
 }

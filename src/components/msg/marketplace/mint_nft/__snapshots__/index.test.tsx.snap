@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: TransactionDetails/MsgMintNft matches snapshot 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1"
+>
+  <div
+    components={
+      Array [
+        <Name
+          address="creator"
+          name="creator"
+        />,
+        <Name
+          address="recipient"
+          name="recipient"
+        />,
+        <UNDEFINED
+          content={
+            Object {
+              "data": "data",
+              "denomId": "denomId",
+              "name": "name",
+              "price": Object {
+                "baseDenom": "acudos",
+                "displayDenom": "acudos",
+                "exponent": 0,
+                "value": "1",
+              },
+              "uid": "uid",
+              "uri": "uri",
+            }
+          }
+        />,
+      ]
+    }
+    i18nKey="message_contents:txMintNft"
+    id="message_contents:txMintNft"
+  />
+</p>
+`;

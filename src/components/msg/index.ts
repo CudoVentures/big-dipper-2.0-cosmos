@@ -82,6 +82,18 @@ import SendToCosmos from './gravity/send_to_cosmos';
 import CreateAddress from './addressbook/create_address';
 import UpdateAddress from './addressbook/update_address';
 import DeleteAddress from './addressbook/delete_address';
+import CreateCollection from './marketplace/create_collection';
+import PublishCollection from './marketplace/publish_collection';
+import VerifyCollection from './marketplace/verify_collection';
+import UnverifyCollection from './marketplace/unverify_collection';
+import AddAdmin from './marketplace/add_admin';
+import MintNft from './marketplace/mint_nft';
+import PublishNft from './marketplace/publish_nft';
+import RemoveNft from './marketplace/remove_nft';
+import UpdatePrice from './marketplace/update_price';
+import UpdateRoyalties from './marketplace/update_royalties';
+import BuyNft from './marketplace/buy_nft';
+import RemoveAdmin from './marketplace/remove_admin';
 
 export {
   getMessageModelByType,
@@ -159,4 +171,16 @@ export {
   CreateAddress,
   UpdateAddress,
   DeleteAddress,
+  CreateCollection,
+  PublishCollection,
+  VerifyCollection,
+  UnverifyCollection,
+  AddAdmin,
+  MintNft,
+  PublishNft,
+  RemoveNft,
+  UpdatePrice,
+  UpdateRoyalties,
+  BuyNft,
+  RemoveAdmin,
 };

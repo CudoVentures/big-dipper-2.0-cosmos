@@ -34,6 +34,8 @@ import {
   ContractOverview, ContractMessages, ContractMessagesList, SingleContractMessageMobile,
 } from './cosmwasm';
 import AddressBookDetails from './addressbook_details';
+import RoyaltiesDetails from './royalties_details';
+import NftDetails from './nft_details';
 
 export {
   Layout,
@@ -73,4 +75,6 @@ export {
   ContractMessagesList,
   SingleContractMessageMobile,
   AddressBookDetails,
+  RoyaltiesDetails,
+  NftDetails,
 };
