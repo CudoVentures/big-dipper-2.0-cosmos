@@ -1,5 +1,6 @@
-import { Royalties } from '@src/models/msg/types';
-import { Categories } from '../types';
+import {
+  Royalties, Categories,
+} from '@src/models/msg/types';
 
 class MsgUpdateRoyalties {
   public category: Categories;
