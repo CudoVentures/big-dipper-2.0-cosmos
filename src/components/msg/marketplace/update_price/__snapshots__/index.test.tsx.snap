@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: TransactionDetails/MsgUpdatePrice matches snapshot 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1"
+>
+  <div
+    components={
+      Array [
+        <Name
+          address="creator"
+          name="creator"
+        />,
+      ]
+    }
+    i18nKey="message_contents:txUpdatePrice"
+    id="message_contents:txUpdatePrice"
+    values={
+      Object {
+        "id": "id",
+        "price": "1 acudos",
+      }
+    }
+  />
+</p>
+`;

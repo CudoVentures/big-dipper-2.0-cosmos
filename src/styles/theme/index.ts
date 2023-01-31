@@ -127,6 +127,8 @@ export const common = {
         eighteen: '#F0A479',
         nineteen: '#D37763',
         twenty: '#D9C788',
+        twentyOne: '#FF720C',
+        twentyTwo: '#BA0086',
       },
       fonts: {
         fontFive: '#FFFFFF',
@@ -190,11 +192,11 @@ export const common = {
   },
 };
 
-export const lightTemplate:ThemeOptions = R.mergeDeepLeft(lightThemeOverride, common);
-export const darkTemplate:ThemeOptions = R.mergeDeepLeft(darkThemeOverride, common);
-export const deuteranopiaTemplate:ThemeOptions = R.mergeDeepLeft(deuteranopiaThemeOverride, common);
-export const tritanopiaTemplate:ThemeOptions = R.mergeDeepLeft(tritanopiaThemeOverride, common);
-export const cudosTemplate:ThemeOptions = R.mergeDeepLeft(cudosThemeOverride, common);
+export const lightTemplate: ThemeOptions = R.mergeDeepLeft(lightThemeOverride, common);
+export const darkTemplate: ThemeOptions = R.mergeDeepLeft(darkThemeOverride, common);
+export const deuteranopiaTemplate: ThemeOptions = R.mergeDeepLeft(deuteranopiaThemeOverride, common);
+export const tritanopiaTemplate: ThemeOptions = R.mergeDeepLeft(tritanopiaThemeOverride, common);
+export const cudosTemplate: ThemeOptions = R.mergeDeepLeft(cudosThemeOverride, common);
 
 // export const lightTheme = createMuiTheme(lightTemplate);
 // export const darkTheme = createMuiTheme(darkTemplate);

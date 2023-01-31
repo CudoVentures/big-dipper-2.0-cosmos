@@ -63,5 +63,20 @@
   "txMigrateContract": "Migrate Contract",
   "txUpdateContractAdmin": "Update Contract Admin",
   "txClearContractAdmin": "Clear Contract Admin",
-  "MsgSendToCosmosClaim": "Gravity Bridge - Ethereum to Cosmos"
+  "MsgSendToCosmosClaim": "Gravity Bridge - Ethereum to Cosmos",
+  "txCreateAddress": "New Address Book Record",
+  "txUpdateAddress": "Update Address Book Record",
+  "txDeleteAddress": "Delete Address Book Record",
+  "txCreateCollection": "Create NFT Collection",
+  "txPublishCollection": "Publish NFT Collection",
+  "txUpdateRoyalties": "Update NFT Collection Royalties",
+  "txVerifyCollection": "Verify NFT Collection",
+  "txUnverifyCollection": "Unverify NFT Collection",
+  "txAddAdmin": "Add Marketplace Admin",
+  "txRemoveAdmin": "Remove Marketplace Admin",
+  "txMintNft": "Mint NFT",
+  "txPublishNft": "Publish NFT for sale",
+  "txRemoveNft": "Remove NFT from sale",
+  "txUpdatePrice": "Update NFT price",
+  "txBuyNft": "Buy NFT"
 }

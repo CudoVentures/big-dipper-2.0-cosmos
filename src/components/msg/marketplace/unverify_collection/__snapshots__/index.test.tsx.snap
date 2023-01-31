@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: TransactionDetails/MsgUnverifyCollection matches snapshot 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1"
+>
+  <div
+    components={
+      Array [
+        <Name
+          address="Creator"
+          name="Creator"
+        />,
+        <Name
+          address="admin"
+          name="admin"
+        />,
+      ]
+    }
+    i18nKey="message_contents:txUnverifyCollection"
+    id="message_contents:txUnverifyCollection"
+    values={
+      Object {
+        "collectionId": "collectionId",
+      }
+    }
+  />
+</p>
+`;

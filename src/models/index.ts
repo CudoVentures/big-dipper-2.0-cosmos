@@ -76,6 +76,21 @@ import MsgMigrateContract from './msg/cosmwasm/msg_migrate_contract';
 import MsgUpdateContractAdmin from './msg/cosmwasm/msg_update_contract_admin';
 import MsgClearContractAdmin from './msg/cosmwasm/msg_clear_contract_admin';
 import MsgSendToCosmosClaim from './msg/gravity/msg_send_to_cosmos_claim';
+import MsgCreateAddress from './msg/addressbook/msg_create_address';
+import MsgUpdateAddress from './msg/addressbook/msg_update_address';
+import MsgDeleteAddress from './msg/addressbook/msg_delete_address';
+import MsgCreateCollection from './msg/marketplace/msg_create_collection';
+import MsgPublishCollection from './msg/marketplace/msg_publish_collection';
+import MsgVerifyCollection from './msg/marketplace/msg_verify_collection';
+import MsgUnverifyCollection from './msg/marketplace/msg_unverify_collection';
+import MsgAddAdmin from './msg/marketplace/msg_add_admin';
+import MsgMintNft from './msg/marketplace/msg_mint_nft';
+import MsgPublishNft from './msg/marketplace/msg_publish_nft';
+import MsgRemoveNft from './msg/marketplace/msg_remove_nft';
+import MsgUpdatePrice from './msg/marketplace/msg_update_price';
+import MsgUpdateRoyalties from './msg/marketplace/msg_update_royalties';
+import MsgBuyNft from './msg/marketplace/msg_buy_nft';
+import MsgRemoveAdmin from './msg/marketplace/msg_remove_admin';
 
 export {
   BigDipperNetwork,
@@ -156,4 +171,19 @@ export {
   MsgUpdateContractAdmin,
   MsgClearContractAdmin,
   MsgSendToCosmosClaim,
+  MsgCreateAddress,
+  MsgUpdateAddress,
+  MsgDeleteAddress,
+  MsgCreateCollection,
+  MsgPublishCollection,
+  MsgVerifyCollection,
+  MsgUnverifyCollection,
+  MsgAddAdmin,
+  MsgMintNft,
+  MsgPublishNft,
+  MsgRemoveNft,
+  MsgUpdatePrice,
+  MsgUpdateRoyalties,
+  MsgBuyNft,
+  MsgRemoveAdmin,
 };
