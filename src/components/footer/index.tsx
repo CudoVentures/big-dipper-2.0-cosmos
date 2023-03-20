@@ -145,7 +145,7 @@ const Footer: React.FC<{className?: string}> = ({ className }) => {
           {' '}
           {year}
         </Typography>
-        <Typography className="footer__closing--text">
+        {/* <Typography className="footer__closing--text">
           <Trans
             i18nKey="common:maintainBy"
             components={[
@@ -156,6 +156,20 @@ const Footer: React.FC<{className?: string}> = ({ className }) => {
             ]}
             values={{
               name: generalConfig.maintainer.name,
+            }}
+          />
+        </Typography> */}
+        <Typography className="footer__closing--text">
+          <Trans
+            i18nKey="common:appVersion"
+            components={[
+              (
+                // eslint-disable-next-line
+                <a target="_blank" rel="noreferrer" href={`https://github.com/CudoVentures/big-dipper-2.0-cosmos/releases/tag/${process.env.NEXT_PUBLIC_APP_DEPLOYMENT_VERSION}`} />
+              ),
+            ]}
+            values={{
+              appVersion: process.env.NEXT_PUBLIC_APP_DEPLOYMENT_VERSION,
             }}
           />
         </Typography>
