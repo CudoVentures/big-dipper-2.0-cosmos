@@ -15,7 +15,7 @@ import {
 } from '@recoil/market';
 import { AtomState } from '@recoil/market/types';
 import { formatToken } from '@utils/format_token';
-import Big from 'big.js'
+import Big from 'big.js';
 
 export const useMarketRecoil = () => {
   const [market, setMarket] = useRecoilState(writeMarket) as [AtomState, SetterOrUpdater<AtomState>];
@@ -35,12 +35,11 @@ export const useMarketRecoil = () => {
 
   const formatUseChainIdQuery = (data: MarketDataQuery): AtomState => {
     let {
-      communityPool, price, marketCap,
+      communityPool, price,
     } = market;
 
     if (data?.tokenPrice?.length) {
       price = numeral(numeral(data?.tokenPrice[0]?.price).format('0.[00]', Math.floor)).value();
-      marketCap = data.tokenPrice[0]?.marketCap;
     }
 
     const [communityPoolCoin] = R.pathOr([], ['communityPool', 0, 'coins'], data).filter((x) => x.denom === chainConfig.primaryTokenUnit);
@@ -60,9 +59,9 @@ export const useMarketRecoil = () => {
 
     let adjustedMarketCap = 0;
     if (
-      data?.tokenPrice[0]?.price &&
-      rawSupplyAmount &&
-      supply.exponent
+      data?.tokenPrice[0]?.price
+      && rawSupplyAmount
+      && supply.exponent
     ) {
       adjustedMarketCap = Big(rawSupplyAmount)
         .div(new Big(10).pow(supply.exponent))
