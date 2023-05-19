@@ -58,10 +58,17 @@ export const useMarketRecoil = () => {
       communityPool = formatToken(communityPoolCoin.amount, communityPoolCoin.denom);
     }
 
-    const adjustedMarketCap = Big(rawSupplyAmount)
-      .div(new Big(10).pow(supply.exponent))
-      .times(data?.tokenPrice[0]?.price)
-      .toNumber();
+    let adjustedMarketCap = 0;
+    if (
+      data?.tokenPrice[0]?.price &&
+      rawSupplyAmount &&
+      supply.exponent
+    ) {
+      adjustedMarketCap = Big(rawSupplyAmount)
+        .div(new Big(10).pow(supply.exponent))
+        .times(data?.tokenPrice[0]?.price)
+        .toNumber();
+    }
 
     return ({
       price,
