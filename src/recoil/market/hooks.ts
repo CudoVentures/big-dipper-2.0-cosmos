@@ -15,6 +15,7 @@ import {
 } from '@recoil/market';
 import { AtomState } from '@recoil/market/types';
 import { formatToken } from '@utils/format_token';
+import Big from 'big.js'
 
 export const useMarketRecoil = () => {
   const [market, setMarket] = useRecoilState(writeMarket) as [AtomState, SetterOrUpdater<AtomState>];
@@ -57,10 +58,15 @@ export const useMarketRecoil = () => {
       communityPool = formatToken(communityPoolCoin.amount, communityPoolCoin.denom);
     }
 
+    const adjustedMarketCap = Big(rawSupplyAmount)
+      .div(new Big(10).pow(supply.exponent))
+      .times(data?.tokenPrice[0]?.price)
+      .toNumber();
+
     return ({
       price,
       supply,
-      marketCap,
+      marketCap: adjustedMarketCap,
       inflation,
       communityPool,
       apr,
