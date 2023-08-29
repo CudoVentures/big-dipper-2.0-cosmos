@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as R from 'ramda';
 import { Cw20TokenInfo } from './types';
 
-export const fetchCW20TokenInfo = async (address: string):Promise<Cw20TokenInfo> => {
+export const fetchCW20TokenInfo = async (address: string): Promise<Cw20TokenInfo> => {
   const defaultReturnValue = {
     cw20TokenInfo: {
       address: '',
@@ -25,8 +25,12 @@ export const fetchCW20TokenInfo = async (address: string):Promise<Cw20TokenInfo>
       },
       query: Cw20TokenInfoDocument,
     });
-    const tokenInfo = R.pathOr(defaultReturnValue, ['data', 'cw20token_info_by_pk'], data);
 
+    if (!data || !data.data?.cw20token_info_by_pk) {
+      throw new Error("No tokenInfo")
+    }
+
+    const tokenInfo = R.pathOr(defaultReturnValue, ['data', 'cw20token_info_by_pk'], data);
     return {
       address,
       name: tokenInfo.name,
