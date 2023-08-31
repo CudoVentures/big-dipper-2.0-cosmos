@@ -27,7 +27,7 @@ export const fetchCW20TokenInfo = async (address: string): Promise<Cw20TokenInfo
     });
 
     if (!data || !data.data?.cw20token_info_by_pk) {
-      throw new Error("No tokenInfo")
+      throw new Error('No tokenInfo');
     }
 
     const tokenInfo = R.pathOr(defaultReturnValue, ['data', 'cw20token_info_by_pk'], data);

@@ -38,20 +38,17 @@ class MsgExecuteContract {
   }
 
   static decodeMsg(data: string): string | undefined {
-    let message: string = data
+    let message: string = data;
     try {
       // Will throw if data is not valid base64 string
       const decodedMsg = JSON.parse(window.atob(data));
       if (Object.keys(decodedMsg).length) {
-        message = decodedMsg
+        message = decodedMsg;
       }
-
     } catch (error) {
-      console.log(`no need to decode: ${data}`)
-
-    } finally {
-      return message
+      console.log(`no need to decode: ${data}`);
     }
+    return message;
   }
 }
 
