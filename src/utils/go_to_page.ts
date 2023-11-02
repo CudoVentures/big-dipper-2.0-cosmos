@@ -1,4 +1,6 @@
-import { AddressType, chainConfig, isTestnet } from '@configs';
+import {
+  AddressType, chainConfig, isTestnet,
+} from '@configs';
 
 export const HOME = '/';
 export const BLOCKS = '/blocks';
@@ -12,11 +14,11 @@ export const PROPOSAL_DETAILS = (id: string | number): string => `/proposals/${i
 export const ACCOUNT_DETAILS = (address: string, addressType?: AddressType): string => {
   if (addressType && addressType === AddressType.ETH) {
     if (isTestnet()) {
-      return `https://sepolia.etherscan.io/address/${address}`
+      return `https://sepolia.etherscan.io/address/${address}`;
     }
-    return `https://etherscan.io/address/${address}`
+    return `https://etherscan.io/address/${address}`;
   }
-  return `/accounts/${address}`
+  return `/accounts/${address}`;
 };
 export const TOKEN_DETAILS = (address: string): string => `/token/${address}`;
 export const PARAMS = '/params';

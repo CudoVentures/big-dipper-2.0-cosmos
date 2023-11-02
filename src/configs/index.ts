@@ -15,17 +15,12 @@ const getChainConfig = () => {
 };
 
 const isTestnet = (): boolean => {
-  return getChainType() !== 'mainnet'
-}
+  return getChainType() !== 'mainnet';
+};
 
 const getChainType = (): string => {
   return process.env.NEXT_PUBLIC_CHAIN_TYPE || process.env.NEXT_PUBLIC_CHAIN_STATUS;
-}
-
-enum AddressType {
-  ETH = 'eth',
-  CUDOS = 'cudos'
-}
+};
 
 const chainConfig = getChainConfig();
 
@@ -34,5 +29,10 @@ export {
   generalConfig,
   chainConfigTemp,
   isTestnet,
-  AddressType
 };
+
+// eslint-disable-next-line no-shadow
+export enum AddressType {
+  ETH = 'eth',
+  CUDOS = 'cudos'
+}

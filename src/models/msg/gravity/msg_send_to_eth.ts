@@ -29,4 +29,3 @@ class MsgSendToEth {
 }
 
 export default MsgSendToEth;
-

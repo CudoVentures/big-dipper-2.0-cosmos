@@ -26,4 +26,3 @@ class MsgCancelSendToEth {
 }
 
 export default MsgCancelSendToEth;
-

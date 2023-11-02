@@ -1,3 +1,21 @@
+const LEGACY_PROPOSAL_TYPE = '/cosmos.gov.v1.MsgExecLegacyContent';
+
+const OmitFields = {
+  description: 'description',
+  title: 'title',
+  authority: 'authority',
+};
+
+type OmitKeys = keyof typeof OmitFields;
+
+const omitKeys = <T extends Record<string, unknown>>(obj: T, keys: OmitKeys[]): Omit<T, OmitKeys> => {
+  const res = { ...obj };
+  keys.forEach((key) => {
+    delete res[key as keyof T];
+  });
+  return res as Omit<T, OmitKeys>;
+};
+
 export const getProposalType = (proposalType: string) => {
   let type = proposalType;
   if (proposalType === '/cosmos.gov.v1beta1.TextProposal') {
@@ -39,3 +57,24 @@ export const shouldShowData = (status: string) => (
     'PROPOSAL_STATUS_FAILED',
   ].includes(status)
 );
+
+const isLegacyProposal = (content: any): boolean => {
+  const contentType: string = content['@type'];
+  if (contentType) {
+    return contentType === LEGACY_PROPOSAL_TYPE;
+  }
+  return false;
+};
+
+export const getProposalContentString = (content: any): string | null => {
+  if (!content.length) {
+    return null;
+  }
+
+  let contentObject = content;
+  if (isLegacyProposal(contentObject[0])) {
+    contentObject = omitKeys(contentObject[0].content, Object.keys(OmitFields) as OmitKeys[]);
+  }
+
+  return JSON.stringify(contentObject, null, 2);
+};
