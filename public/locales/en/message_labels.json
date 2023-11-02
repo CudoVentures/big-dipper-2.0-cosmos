@@ -64,6 +64,8 @@
   "txUpdateContractAdmin": "Update Contract Admin",
   "txClearContractAdmin": "Clear Contract Admin",
   "MsgSendToCosmosClaim": "Gravity Bridge - Ethereum to Cosmos",
+  "MsgCancelSendToEth": "Gravity Bridge - Cancel Send To Eth",
+  "MsgSendToEth": "Gravity Bridge - Cosmos to Ethereum",
   "txCreateAddress": "New Address Book Record",
   "txUpdateAddress": "Update Address Book Record",
   "txDeleteAddress": "Delete Address Book Record",

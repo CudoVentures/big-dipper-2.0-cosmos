@@ -456,6 +456,18 @@ const getDataByType = (type: string) => {
       tagTheme: 'four',
       tagDisplay: 'MsgSendToCosmosClaim',
     },
+    '/gravity.v1.MsgSendToEth': {
+      model: MODELS.MsgSendToEth,
+      content: COMPONENTS.SendToEth,
+      tagTheme: 'four',
+      tagDisplay: 'MsgSendToEth',
+    },
+    '/gravity.v1.MsgCancelSendToEth': {
+      model: MODELS.MsgCancelSendToEth,
+      content: COMPONENTS.CancelSendToEth,
+      tagTheme: 'four',
+      tagDisplay: 'MsgCancelSendToEth',
+    },
     // ========================
     // Addressbook
     // ========================

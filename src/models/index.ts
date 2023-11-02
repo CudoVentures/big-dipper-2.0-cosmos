@@ -76,6 +76,8 @@ import MsgMigrateContract from './msg/cosmwasm/msg_migrate_contract';
 import MsgUpdateContractAdmin from './msg/cosmwasm/msg_update_contract_admin';
 import MsgClearContractAdmin from './msg/cosmwasm/msg_clear_contract_admin';
 import MsgSendToCosmosClaim from './msg/gravity/msg_send_to_cosmos_claim';
+import MsgSendToEth from './msg/gravity/msg_send_to_eth';
+import MsgCancelSendToEth from './msg/gravity/msg_cancel_send_to_eth';
 import MsgCreateAddress from './msg/addressbook/msg_create_address';
 import MsgUpdateAddress from './msg/addressbook/msg_update_address';
 import MsgDeleteAddress from './msg/addressbook/msg_delete_address';
@@ -171,6 +173,8 @@ export {
   MsgUpdateContractAdmin,
   MsgClearContractAdmin,
   MsgSendToCosmosClaim,
+  MsgSendToEth,
+  MsgCancelSendToEth,
   MsgCreateAddress,
   MsgUpdateAddress,
   MsgDeleteAddress,

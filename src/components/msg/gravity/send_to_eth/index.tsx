@@ -2,7 +2,7 @@ import React from 'react';
 import Trans from 'next-translate/Trans';
 import { Typography } from '@material-ui/core';
 import { Name } from '@components';
-import { MsgSendToCosmosClaim } from '@models';
+import { MsgSendToEth } from '@models';
 import {
   useProfileRecoil,
 } from '@recoil/profiles';
@@ -11,15 +11,15 @@ import {
 } from '@utils/format_token';
 import { AddressType } from '@src/configs';
 
-const SendToCosmos = (props: {
-  message: MsgSendToCosmosClaim;
+const SendToEth = (props: {
+  message: MsgSendToEth;
 }) => {
   const { message } = props;
 
-  const receiver = useProfileRecoil(message.receiver);
-  const receiverMoniker = receiver ? receiver?.name : message.receiver;
+  const sender = useProfileRecoil(message.sender);
+  const senderMoniker = sender ? sender?.name : message.sender;
 
-  const { ethSender } = message;
+  const { ethDest } = message;
 
   const amount = formatToken(message.amount, 'acudos');
   const displayAmount = `${formatNumber(amount.value, amount.exponent)} ${amount.displayDenom.toUpperCase()}`;
@@ -28,20 +28,20 @@ const SendToCosmos = (props: {
     <>
       <Typography>
         <Trans
-          i18nKey="message_contents:MsgSendToCosmosClaim"
+          i18nKey="message_contents:MsgSendToEth"
           components={[
             (
               <Name
-                address={ethSender}
-                name={ethSender}
-                addressType={AddressType.ETH}
+                address={message.sender}
+                name={senderMoniker}
               />
             ),
             <b />,
             (
               <Name
-                address={message.receiver}
-                name={receiverMoniker}
+                address={ethDest}
+                name={ethDest}
+                addressType={AddressType.ETH}
               />
             ),
           ]}
@@ -54,4 +54,4 @@ const SendToCosmos = (props: {
   );
 };
 
-export default SendToCosmos;
+export default SendToEth;

@@ -3,7 +3,6 @@ import Trans from 'next-translate/Trans';
 import { Typography } from '@material-ui/core';
 import { Name } from '@components';
 import { MsgEditValidator } from '@models';
-import { VALIDATOR_DETAILS } from '@utils/go_to_page';
 import { useProfileRecoil } from '@recoil/profiles';
 
 const EditValidator = (props: {
@@ -24,7 +23,6 @@ const EditValidator = (props: {
             <Name
               address={message.validatorAddress}
               name={validatorMoniker}
-              href={VALIDATOR_DETAILS}
             />
           ),
         ]}
