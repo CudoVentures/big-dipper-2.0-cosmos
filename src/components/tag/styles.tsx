@@ -110,6 +110,10 @@ export const useStyles = () => {
           color: theme.palette.custom.tags.twentyTwo,
           background: Color(theme.palette.custom.tags.twentyTwo).alpha(0.2).string(),
         },
+        twentyThree: {
+          color: theme.palette.custom.tags.twentyThree,
+          background: Color(theme.palette.custom.tags.twentyTwo).alpha(0.2).string(),
+        },
       });
     },
   )();

@@ -5,6 +5,24 @@ import {
 } from '@components';
 import * as COMPONENTS from '@msg';
 
+// eslint-disable-next-line no-shadow
+export enum GroupMsgs {
+  MsgCreateGroup = 'MsgCreateGroup',
+  MsgUpdateGroupMembers = 'MsgUpdateGroupMembers',
+  MsgUpdateGroupAdmin = 'MsgUpdateGroupAdmin',
+  MsgUpdateGroupMetadata = 'MsgUpdateGroupMetadata',
+  MsgCreateGroupPolicy = 'MsgCreateGroupPolicy',
+  MsgCreateGroupWithPolicy = 'MsgCreateGroupWithPolicy',
+  MsgUpdateGroupPolicyAdmin = 'MsgUpdateGroupPolicyAdmin',
+  MsgUpdateGroupPolicyDecisionPolicy = 'MsgUpdateGroupPolicyDecisionPolicy',
+  MsgUpdateGroupPolicyMetadata = 'MsgUpdateGroupPolicyMetadata',
+  MsgSubmitProposal = 'MsgSubmitProposal',
+  MsgWithdrawProposal = 'MsgWithdrawProposal',
+  MsgVote = 'MsgVote',
+  MsgExec = 'MsgExec',
+  MsgLeaveGroup = 'MsgLeaveGroup'
+}
+
 const getDataByType = (type: string) => {
   // =====================================
   // DO NOT UPDATE IF THIS IS A FORK.
@@ -564,6 +582,23 @@ const getDataByType = (type: string) => {
       tagTheme: 'twentyTwo',
       tagDisplay: 'txRemoveAdmin',
     },
+    // ========================
+    // Group
+    // ========================
+    ...getGoupType(GroupMsgs.MsgCreateGroup, 'MsgCreateGroup'),
+    ...getGoupType(GroupMsgs.MsgCreateGroupPolicy, 'MsgCreateGroup'),
+    ...getGoupType(GroupMsgs.MsgCreateGroupWithPolicy, 'MsgCreateGroupWithPolicy'),
+    ...getGoupType(GroupMsgs.MsgExec, 'MsgCreateGroupWithPolicy'),
+    ...getGoupType(GroupMsgs.MsgLeaveGroup, 'MsgLeaveGroup'),
+    ...getGoupType(GroupMsgs.MsgSubmitProposal, 'MsgSubmitProposal'),
+    ...getGoupType(GroupMsgs.MsgUpdateGroupAdmin, 'MsgUpdateGroupAdmin'),
+    ...getGoupType(GroupMsgs.MsgUpdateGroupMembers, 'MsgUpdateGroupMembers'),
+    ...getGoupType(GroupMsgs.MsgUpdateGroupMetadata, 'MsgUpdateGroupMetadata'),
+    ...getGoupType(GroupMsgs.MsgUpdateGroupPolicyAdmin, 'MsgUpdateGroupPolicyAdmin'),
+    ...getGoupType(GroupMsgs.MsgUpdateGroupPolicyDecisionPolicy, 'MsgUpdateGroupPolicyDecisionPolicy'),
+    ...getGoupType(GroupMsgs.MsgUpdateGroupPolicyMetadata, 'MsgUpdateGroupPolicyMetadata'),
+    ...getGoupType(GroupMsgs.MsgVote, 'MsgVote'),
+    ...getGoupType(GroupMsgs.MsgWithdrawProposal, 'MsgWithdrawProposal'),
   };
 
   if (defaultTypeToModel[type]) return defaultTypeToModel[type];
@@ -641,4 +676,20 @@ export const convertMsgsToModels = (transaction: any) => {
   });
 
   return messages;
+};
+
+export const getGoupType = (msgType: keyof typeof GroupMsgs, tagDisplay: string): {
+  [key: string]: { model: any, content: any, tagTheme: string, tagDisplay: string }
+} => {
+  const typeUrl = `cosmos.group.v1.${msgType}`;
+  const baseUrl = `/${typeUrl}`;
+  console.log(baseUrl)
+  return {
+    [baseUrl]: {
+      model: MODELS.MsgUnknown,
+      content: COMPONENTS.Unknown,
+      tagTheme: 'twentyThree',
+      tagDisplay,
+    },
+  };
 };

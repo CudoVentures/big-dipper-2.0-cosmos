@@ -80,5 +80,19 @@
   "txPublishNft": "Publish NFT for sale",
   "txRemoveNft": "Remove NFT from sale",
   "txUpdatePrice": "Update NFT price",
-  "txBuyNft": "Buy NFT"
+  "txBuyNft": "Buy NFT",
+  "MsgCreateGroup":"Create Group",
+  "MsgCreateGroupPolicy":"Create Group Policy",
+  "MsgCreateGroupWithPolicy":"Create Group with Policy",
+  "MsgExec":"Execute Group Proposal",
+  "MsgLeaveGroup":"Leave Group",
+  "MsgSubmitProposal":"Submit Group Proposal",
+  "MsgUpdateGroupAdmin":"Update Group Admin",
+  "MsgUpdateGroupMembers":"Update Group Members",
+  "MsgUpdateGroupMetadata":"Update Group Metadata",
+  "MsgUpdateGroupPolicyAdmin":"Update Group Policy Admin",
+  "MsgUpdateGroupPolicyDecisionPolicy":"Update Group Decision Policy",
+  "MsgUpdateGroupPolicyMetadata":"Update Group Policy Metadata",
+  "MsgVote":"Group Proposal Vote",
+  "MsgWithdrawProposal":"Withdraw Proposal"
 }
