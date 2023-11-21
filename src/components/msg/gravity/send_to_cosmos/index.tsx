@@ -9,14 +9,17 @@ import {
 import {
   formatToken, formatNumber,
 } from '@utils/format_token';
+import { AddressType } from '@src/configs';
 
 const SendToCosmos = (props: {
-    message: MsgSendToCosmosClaim;
+  message: MsgSendToCosmosClaim;
 }) => {
   const { message } = props;
 
   const receiver = useProfileRecoil(message.receiver);
   const receiverMoniker = receiver ? receiver?.name : message.receiver;
+
+  const { ethSender } = message;
 
   const amount = formatToken(message.amount, 'acudos');
   const displayAmount = `${formatNumber(amount.value, amount.exponent)} ${amount.displayDenom.toUpperCase()}`;
@@ -27,7 +30,13 @@ const SendToCosmos = (props: {
         <Trans
           i18nKey="message_contents:MsgSendToCosmosClaim"
           components={[
-            <b />,
+            (
+              <Name
+                address={ethSender}
+                name={ethSender}
+                addressType={AddressType.ETH}
+              />
+            ),
             <b />,
             (
               <Name
@@ -37,7 +46,6 @@ const SendToCosmos = (props: {
             ),
           ]}
           values={{
-            ethSender: message.ethSender,
             amount: displayAmount,
           }}
         />

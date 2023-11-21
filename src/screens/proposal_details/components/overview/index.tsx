@@ -1,5 +1,4 @@
 import React from 'react';
-import * as R from 'ramda';
 import numeral from 'numeral';
 import classnames from 'classnames';
 import dayjs, { formatDayJs } from '@utils/dayjs';
@@ -16,14 +15,8 @@ import {
   Box,
   Markdown,
 } from '@components';
-import {
-  ParamsChange,
-  SoftwareUpgrade,
-  IbcUpgrade,
-  CommunitySpend,
-} from './components';
 import { useStyles } from './styles';
-import { getProposalType } from '../../utils';
+import { getProposalContentString } from '../../utils';
 
 const JSONPrettyMon = require('react-json-pretty/dist/monikai');
 
@@ -45,69 +38,7 @@ const Overview: React.FC<{
   const classes = useStyles();
   const { t } = useTranslation('proposals');
 
-  const type = getProposalType(R.pathOr('', ['@type'], props.content));
-
-  const getExtraDetails = () => {
-    let extraDetails = null;
-    if (type === 'parameterChangeProposal') {
-      extraDetails = (
-        <>
-          <Typography variant="body1" className="label">
-            {t('changes')}
-          </Typography>
-          <ParamsChange
-            changes={R.pathOr([], ['changes'], props.content)}
-          />
-        </>
-      );
-    } else if (type === 'softwareUpgradeProposal') {
-      extraDetails = (
-        <>
-          <Typography variant="body1" className="label">
-            {t('plan')}
-          </Typography>
-          <SoftwareUpgrade
-            height={R.pathOr('0', ['plan', 'height'], props.content)}
-            info={R.pathOr('', ['plan', 'info'], props.content)}
-            name={R.pathOr('', ['plan', 'name'], props.content)}
-          />
-        </>
-      );
-    } else if (type === 'communityPoolSpendProposal') {
-      extraDetails = (
-        <>
-          <Typography variant="body1" className="label">
-            {t('details')}
-          </Typography>
-          <CommunitySpend
-            recipient={R.pathOr('', ['recipient'], props.content)}
-            amount={`${R.pathOr('', ['amount', '0', 'amount'], props.content)} ${R.pathOr('', ['amount', '0', 'denom'], props.content)}`}
-          />
-        </>
-      );
-    } else if (type === 'IbcUpgradeProposal') {
-      extraDetails = (
-        <>
-          <Typography variant="body1" className="label">
-            {t('details')}
-          </Typography>
-          <IbcUpgrade
-            height={R.pathOr('0', ['plan', 'height'], props.content)}
-            info={R.pathOr('', ['plan', 'info'], props.content)}
-            name={R.pathOr('', ['plan', 'name'], props.content)}
-          />
-          <Typography variant="body1" className="label">
-            {t('upgradedClientState')}
-          </Typography>
-          <JSONPretty id="json-pretty" data={JSON.stringify(R.pathOr('', ['upgraded_client_state'], props.content), null, 2)} theme={JSONPrettyMon} />
-        </>
-      );
-    }
-
-    return extraDetails;
-  };
-
-  const extra = getExtraDetails();
+  const contentString = getProposalContentString(props.content);
 
   return (
     <Box className={classnames(className, classes.root)}>
@@ -117,68 +48,73 @@ const Overview: React.FC<{
         status={props.status}
       />
       <Divider />
-      <div className={classes.content}>
-        <Typography variant="body1" className="label">
-          {t('type')}
-        </Typography>
-        <Typography variant="body1" className="value">
-          {t(type)}
-        </Typography>
+      <div
+        style={{
+          flexDirection: 'column', display: 'flex',
+        }}
+        className={classes.content}
+      >
+        {contentString ? (
+          <JSONPretty
+            id="json-pretty"
+            data={contentString}
+            theme={JSONPrettyMon}
+          />
+        ) : null}
         <Typography variant="body1" className="label">
           {t('description')}
         </Typography>
         <Markdown markdown={props.description} />
-        {extra}
       </div>
       <div className={classes.time}>
         {
-          !!props.submitTime && (
-            <div>
-              <Typography variant="body1" className="label">
-                {t('submitTime')}
-              </Typography>
-              <Typography variant="body1" className="value">
-                {formatDayJs(dayjs.utc(props.submitTime), dateFormat)}
-              </Typography>
-            </div>
-          )
-        }
+            !!props.submitTime && (
+              <div>
+                <Typography variant="body1" className="label">
+                  {t('submitTime')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {formatDayJs(dayjs.utc(props.submitTime), dateFormat)}
+                </Typography>
+              </div>
+            )
+          }
         {
-          !!props.depositEndTime && (
-            <div>
-              <Typography variant="body1" className="label">
-                {t('depositEndTime')}
-              </Typography>
-              <Typography variant="body1" className="value">
-                {formatDayJs(dayjs.utc(props.depositEndTime), dateFormat)}
-              </Typography>
-            </div>
-          )
-        }
+            !!props.depositEndTime && (
+              <div>
+                <Typography variant="body1" className="label">
+                  {t('depositEndTime')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {formatDayJs(dayjs.utc(props.depositEndTime), dateFormat)}
+                </Typography>
+              </div>
+            )
+          }
         {
-          !!props.votingStartTime && (
-            <div>
-              <Typography variant="body1" className="label">
-                {t('votingStartTime')}
-              </Typography>
-              <Typography variant="body1" className="value">
-                {formatDayJs(dayjs.utc(props.votingStartTime), dateFormat)}
-              </Typography>
-            </div>
-          )
-        }
+            !!props.votingStartTime && (
+              <div>
+                <Typography variant="body1" className="label">
+                  {t('votingStartTime')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {formatDayJs(dayjs.utc(props.votingStartTime), dateFormat)}
+                </Typography>
+              </div>
+            )
+          }
         {
-          !!props.votingEndTime && (
-            <div>
-              <Typography variant="body1" className="label">
-                {t('votingEndTime')}
-              </Typography>
-              <Typography variant="body1" className="value">
-                {formatDayJs(dayjs.utc(props.votingEndTime), dateFormat)}
-              </Typography>
-            </div>
-          )
-        }
+            !!props.votingEndTime && (
+              <div>
+                <Typography variant="body1" className="label">
+                  {t('votingEndTime')}
+                </Typography>
+                <Typography variant="body1" className="value">
+                  {formatDayJs(dayjs.utc(props.votingEndTime), dateFormat)}
+                </Typography>
+              </div>
+            )
+          }
       </div>
     </Box>
   );

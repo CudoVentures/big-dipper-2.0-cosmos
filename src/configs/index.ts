@@ -8,11 +8,18 @@ import generalConfig from './general_config.json';
  * @returns config
  */
 const getChainConfig = () => {
-  const chainType = process.env.NEXT_PUBLIC_CHAIN_TYPE || process.env.NEXT_PUBLIC_CHAIN_STATUS;
-  if (chainType === 'mainnet') {
+  if (!isTestnet()) {
     return chainConfigMainnet;
   }
   return chainConfigTestnet;
+};
+
+const isTestnet = (): boolean => {
+  return getChainType() !== 'mainnet';
+};
+
+const getChainType = (): string => {
+  return process.env.NEXT_PUBLIC_CHAIN_TYPE || process.env.NEXT_PUBLIC_CHAIN_STATUS;
 };
 
 const chainConfig = getChainConfig();
@@ -21,4 +28,11 @@ export {
   chainConfig,
   generalConfig,
   chainConfigTemp,
+  isTestnet,
 };
+
+// eslint-disable-next-line no-shadow
+export enum AddressType {
+  ETH = 'eth',
+  CUDOS = 'cudos'
+}

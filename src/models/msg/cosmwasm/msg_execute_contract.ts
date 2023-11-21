@@ -21,10 +21,9 @@ class MsgExecuteContract {
   }
 
   static fromJson(json: any) {
-    json.msg_decoded = json.msg;
     return new MsgExecuteContract({
       contract: json.contract,
-      msg: json.msg,
+      msg: this.decodeMsg(json.msg),
       sender: json.sender,
       type: json['@type'],
       json,
@@ -36,6 +35,20 @@ class MsgExecuteContract {
     const method = Object.keys(msgObj)[0];
     const args = JSON.stringify(msgObj[method]);
     return [method, args];
+  }
+
+  static decodeMsg(data: string): string | undefined {
+    let message: string = data;
+    try {
+      // Will throw if data is not valid base64 string
+      const decodedMsg = JSON.parse(window.atob(data));
+      if (Object.keys(decodedMsg).length) {
+        message = decodedMsg;
+      }
+    } catch (error) {
+      console.log(`no need to decode: ${data}`);
+    }
+    return message;
   }
 }
 

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen: TransactionDetails/MsgPublishCollection matches snapshot 1`] = `
+<p
+  className="MuiTypography-root MuiTypography-body1"
+>
+  <div
+    components={
+      Array [
+        <Name
+          address="Creator"
+          name="Creator"
+        />,
+        <UNDEFINED
+          royalties={
+            Array [
+              Object {
+                "address": "address",
+                "percent": "percent",
+              },
+            ]
+          }
+          type="Mint"
+        />,
+        <UNDEFINED
+          royalties={
+            Array [
+              Object {
+                "address": "address",
+                "percent": "percent",
+              },
+            ]
+          }
+          type="Resale"
+        />,
+      ]
+    }
+    i18nKey="message_contents:txPublishCollection"
+    id="message_contents:txPublishCollection"
+    values={
+      Object {
+        "collectionId": "collectionId",
+      }
+    }
+  />
+</p>
+`;

@@ -45,6 +45,9 @@ declare module '@material-ui/core/styles/createPalette' {
             eighteen: string,
             nineteen: string,
             twenty: string,
+            twentyOne: string,
+            twentyTwo: string,
+            twentyThree: string,
         },
         charts: {
             zero: string;

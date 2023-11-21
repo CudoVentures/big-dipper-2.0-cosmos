@@ -317,7 +317,7 @@ exports[`component: layout/footer matches snapshot 1`] = `
     <p
       className="MuiTypography-root footer__closing--text MuiTypography-body1"
     >
-      common:maintainBy
+      common:appVersion
     </p>
   </div>
 </div>

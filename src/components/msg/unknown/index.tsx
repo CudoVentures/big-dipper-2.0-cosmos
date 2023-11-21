@@ -1,6 +1,9 @@
 import React from 'react';
 import { MsgUnknown } from '@models';
+import JSONPretty from 'react-json-pretty';
 import { useGetStyles } from './styles';
+
+const JSONPrettyMon = require('react-json-pretty/dist/monikai');
 
 const Unknown = (props: {
   message: MsgUnknown;
@@ -11,7 +14,11 @@ const Unknown = (props: {
   return (
     <pre className={classes.root}>
       <code>
-        {JSON.stringify(message.json, null, '\t')}
+        <JSONPretty
+          id="json-pretty"
+          data={JSON.stringify(message.json)}
+          theme={JSONPrettyMon}
+        />
       </code>
     </pre>
   );

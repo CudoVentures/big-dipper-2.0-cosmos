@@ -102,6 +102,18 @@ export const useStyles = () => {
           color: theme.palette.custom.tags.twenty,
           background: Color(theme.palette.custom.tags.twenty).alpha(0.2).string(),
         },
+        twentyOne: {
+          color: theme.palette.custom.tags.twentyOne,
+          background: Color(theme.palette.custom.tags.twentyOne).alpha(0.2).string(),
+        },
+        twentyTwo: {
+          color: theme.palette.custom.tags.twentyTwo,
+          background: Color(theme.palette.custom.tags.twentyTwo).alpha(0.2).string(),
+        },
+        twentyThree: {
+          color: theme.palette.custom.tags.twentyThree,
+          background: Color(theme.palette.custom.tags.twentyTwo).alpha(0.2).string(),
+        },
       });
     },
   )();

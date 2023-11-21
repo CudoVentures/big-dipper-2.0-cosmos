@@ -4,13 +4,14 @@ services:
     container_name: explorer-v2
     build:
       context: .
-      dockerfile: Dockerfile-prod
+      dockerfile: Dockerfile.prod
       args:
         NEXT_PUBLIC_GRAPHQL_URL: ${NEXT_PUBLIC_GRAPHQL_URL}
         NEXT_PUBLIC_GRAPHQL_WS: ${NEXT_PUBLIC_GRAPHQL_WS}
         NEXT_PUBLIC_URL: ${NEXT_PUBLIC_URL}
         NEXT_PUBLIC_WS_CHAIN_URL: ${NEXT_PUBLIC_WS_CHAIN_URL}
         NEXT_PUBLIC_CHAIN_STATUS: ${NEXT_PUBLIC_CHAIN_STATUS}
+        NEXT_PUBLIC_APP_DEPLOYMENT_VERSION: ${NEXT_PUBLIC_APP_DEPLOYMENT_VERSION}
         NODE_ENV: ${NODE_ENV}
         PORT: ${PORT}
     restart: always
