@@ -41,8 +41,9 @@ const Desktop: React.FC<{
         <div className={classnames(classes.mergeNotice)}>
           CUDOS has merged with ASI Alliance, and the CUDOS blockchain has shut down.
           All accounts and balances have moved to the
-          <a href="https://www.mintscan.io/fetchai">ASI blockchain</a>.
-          The last state of the CUDOS blockchain is preserved here for historical reference.
+          {' '}
+          <a href="https://www.mintscan.io/fetchai">ASI blockchain</a>
+          . The last state of the CUDOS blockchain is preserved here for historical reference.
         </div>
         <ActionBar
           toggleNetwork={toggleNetwork}
