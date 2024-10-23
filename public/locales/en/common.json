@@ -50,7 +50,7 @@
   "transactionsTitle": "CUDOS Blockchain transactions | View & search transactions",
   "transactionsDescription": "Use the CUDOS blockchain explorer to search for transactions on the network via tx hash, block height / address",
   "supply": "Supply",
-  "blockTimeAgo": "Latest block displayed was {{time}}",
+  "blockTimeAgo": "This is historical data. The CUDOS chain and token have merged with ASI",
   "settings": "Settings",
   "theme": "Theme",
   "language": "Language",
