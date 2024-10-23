@@ -22,7 +22,7 @@ export const common = {
   mixins: {
     toolbar: {
       '@media (min-width: 1280px)': {
-        height: '160px',
+        height: '260px',
         overflow: 'hidden',
       },
     },

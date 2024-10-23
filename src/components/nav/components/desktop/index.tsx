@@ -38,6 +38,11 @@ const Desktop: React.FC<{
           open: isMenu,
         })}
       >
+        <div className={classnames(classes.mergeNotice)}>
+          CUDOS has merged with ASI Alliance, and the CUDOS blockchain has shut down.
+          All accounts and balances have moved to the ASI blockchain.
+          The last state of the CUDOS blockchain is preserved here for historical reference.
+        </div>
         <ActionBar
           toggleNetwork={toggleNetwork}
           isNetwork={isNetwork}

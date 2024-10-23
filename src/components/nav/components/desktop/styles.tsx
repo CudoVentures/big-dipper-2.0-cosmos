@@ -19,6 +19,16 @@ export const useStyles = () => {
             cursor: 'pointer',
           },
         },
+        mergeNotice: {
+          // ...theme.mixins.toolbar,
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'flex-start',
+          padding: theme.spacing(2, 4),
+          margin: theme.spacing(2, 4),
+          background: theme?.palette.custom.primaryData.two,
+          color: theme?.palette?.custom?.fonts?.fontOne ?? 'inherit',
+        },
         appBar: {
           ...theme.mixins.toolbar,
           display: 'flex',
